@@ -2,12 +2,39 @@ const input = document.querySelector("#input")
 const btn = document.querySelector("#btn")
 const result = document.querySelector("#result")
 const total = document.querySelector("#total")
+let i = 0
+
+total.innerHTML = i
 
 btn.addEventListener("click", e => {
-    console.log(input.value)
-
-    result.innerHTML += `<p class="para">${input.value}</p>`
+    if(input.value === "") return
+    createDeleteElements(input.value)
     input.value = ''
 })
 
-console.log(result);
+function createDeleteElements(value) {
+    i++
+    const li = document.createElement("li")
+    const btn = document.createElement("button")
+
+    li.className = "li"
+    li.textContent = value
+
+    btn.className = "btn"
+    btn.textContent = 'delete'
+    li.appendChild(btn)
+
+    btn.addEventListener("click", e => {
+        i--
+        total.innerHTML = i
+        result.removeChild(li)
+    })
+
+    li.addEventListener("click", e => {
+        li.classList.toggle('li-active')
+    })
+
+    total.innerHTML = i
+
+    result.appendChild(li)
+}
