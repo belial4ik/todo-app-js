@@ -1,6 +1,6 @@
 body {
   height: 100vh;
-  background: #c7ecee;
+  background: #dfe6e9;
   margin: 0 auto;
   padding-top: 100px;
 }
@@ -12,6 +12,13 @@ body {
 
 #input {
   width: 70%;
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid #b2bec3;
+}
+
+#input:focus {
+  outline: none;
 }
 
 #btn {
@@ -29,8 +36,8 @@ ul {
 }
 
 .btn {
-  background: red;
-  border: none;
+  background: tomato;
+  /* border: none; */
   color: #fff;
   margin-left: 15px;
   padding: 10px;
@@ -41,8 +48,10 @@ ul {
 
 .li {
   padding: 4px 8px;
-  background: #eddfff;
+  background: transparent;
   border: 1px solid tomato;
+  font-size: 25px;
+  border-radius: 10px;
   margin: 10px 0;
   display: flex;
   justify-content: space-between;
@@ -54,18 +63,13 @@ ul {
 }
 
 .li-active {
-  color: #555;
-  text-decoration: line-through;
-  background: #30336b;
+  background: lightgreen;
 }
 
 .li-active .btn {
   color: #555;
-  text-decoration: line-through;
-  background: #30336b;
 }
 
-.para {
+.total, .active {
   font-size: 30px;
-  color: rgba(0, 0, 0, 0.5);
 }

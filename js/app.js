@@ -2,39 +2,59 @@ const input = document.querySelector("#input")
 const btn = document.querySelector("#btn")
 const result = document.querySelector("#result")
 const total = document.querySelector("#total")
-let i = 0
+const activeTotal = document.querySelector("#active-total")
+let totalCount = 0
+let totalActiveCount = 0
 
-total.innerHTML = i
+total.innerHTML = totalCount
+activeTotal.innerHTML = totalActiveCount
 
 btn.addEventListener("click", e => {
-    if(input.value === "") return
-    createDeleteElements(input.value)
-    input.value = ''
+    if(input.value === "") {
+        alert("input must not be empty")
+    } else {
+        createDeleteElements(input.value)
+        input.value = ''
+    }    
 })
 
 function createDeleteElements(value) {
-    i++
+    totalCount++
     const li = document.createElement("li")
     const btn = document.createElement("button")
 
+    let liActiveClass = 'li-active'
+    let done = li.classList.toggle(liActiveClass)
+
     li.className = "li"
-    li.textContent = value
+    li.innerHTML = value
 
     btn.className = "btn"
-    btn.textContent = 'delete'
+    btn.innerHTML = 'delete'
     li.appendChild(btn)
 
-    btn.addEventListener("click", e => {
-        i--
-        total.innerHTML = i
+    btn.addEventListener("click", () => {
+        totalCount--
+        total.innerHTML = totalCount
+        if(li.classList == liActiveClass) {
+            totalActiveCount--
+            activeTotal.innerHTML = totalActiveCount
+        }
         result.removeChild(li)
     })
 
     li.addEventListener("click", e => {
-        li.classList.toggle('li-active')
+        done = li.classList.toggle(liActiveClass)
+        if(done) {
+            totalActiveCount++
+            activeTotal.innerHTML = totalActiveCount
+        } else {
+            totalActiveCount--
+            activeTotal.innerHTML = totalActiveCount
+        }
     })
 
-    total.innerHTML = i
+    total.innerHTML = totalCount
 
     result.appendChild(li)
 }

@@ -9,14 +9,22 @@
 </head>
 <body>
     <div class="wrap">
+        <h1>My todo list</h1>
         <input type="text" id="input">
-        <button id="btn">добавить</button>
+        <button id="btn">add</button>
         <ul id="result"></ul>
-        <div>
-            Итого: 
-            <span id="total"></span>
+        <div style="display: flex; justify-content: space-between">
+            <div class="total">
+                Total: 
+                <span id="total"></span>
+            </div>
+            <div class="active">
+                Active:
+                <span id="active-total"></span>            
+            </div>
         </div>
-    </div>
+        
+    </div>    
 </body>
 <script src="js/app.js"></script>
 </html>
